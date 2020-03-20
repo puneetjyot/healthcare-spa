@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script type="text/javascript"
+    charset="utf-8"
+    src=
+    "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js">
+  </script>
+    <script type="text/javascript"
+      charset="utf-8" src="script.js">
+    </script>
+   
+  </head>
+  <body>
+    <div class="container">
+      <div class="tab d-flex justify-content-between col-11" style="background-color: #2c3c98;">
+        <div class="mt-3">
+          <label style="font-size: 15px; color: white;">Health Camp SPA</label>
+        </div>
+        <div>
+          <button class="tablinks" style="color: white;" onclick="opentab(event,'Demographics')">
+            Demographics
+          </button>
+          <button class="tablinks" style="color: white;" onclick="opentab(event,'HealthVitals')">
+            HealthVitals
+          </button>
+          <button class="tablinks" style="color: white;" onclick="opentab(event,'Reports')">
+            Reports
+          </button>
+        </div>
+      </div>
+      <br/><br/>
+      <div id='Demographics' class="tabcontent">
+       
+          <div class="col-9 mt-3">
+            <div class="d-flex justify-content-between">
+              <div>
+        <table>
+            <tr>
+            <td>First Name</td>
+            <td><input type="text" class="form-control" id='firstname'></td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td><input type="text" class="form-control" id='lastname'></td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td><select class="form-control" id='gender'>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td><input type="number" class="form-control" id='age'></td>
+        </tr>
+        <tr>
+            <td>Notes or other details</td>
+            <td><input type="text" class="form-control" id='age'></td>
+        </tr>
+        </table>
+        <div class="form-group">
+            <label for="image" class="col-sm-3 control-label">Photo:</label>
+           
+            <button class="btn btn-primary" id="capture">Take a Picture</button>
+            <div class="col-sm-12" id="canvas-div">
+              <canvas id="canvas" width=320 height=240></canvas>
+            </div>
+          </div>
+         
+            <div class=" col-sm-5">
+              <button id="save" type="submit" class="btn btn-success">Save</button>
+             
+            </div>
+          
+          </div>
+          <div class="col-6 m-3" style="height: 200px, max-width=200px">
+            <div >
+              <video style="height: 200px, max-width=200px" id="player" controls autoplay></video>
+             
+            </div>
+            
+            
+          </div>
+        </div>
+      </div>
+      </div>
+    
+<div id="HealthVitals" class="tabcontent">
+  <div class="container" >  
+    <div class="d-flex justify-content-between col-9 mt-3">
+      <div> 
+        <table>
+   <div  class="mb-3">
+   <tr>
+     <td>Height</td>
+     <td><input type='text' class="form-control" id='pheight'></td>
+   </tr>
+  </div>
+   <tr class="mt-3">
+    <td>Weight</td>
+    <td><input type='text' class="form-control" id='pweight'></td>
+  </tr>
+  <tr class="mt-3">
+    <td>Body Temprature</td>
+    <td><input type='text' class="form-control" id='ptemp'></td>
+  </tr>
+  <tr class="mt-3">
+    <td>Pulse Rate</td>
+    <td><input type='text' class="form-control" id='ppulse'></td>
+  </tr>
+  <tr class="mt-3">
+    <td>BP</td>
+    <td><input type='text' class="form-control" id='bp'></td>
+  </tr>
+ </table>
+</div>
+<div>
+<table>
+  <tr>
+    <td>Medications</td>
+    <td><textarea class="form-control" id='pmed' row="3"></textarea></td>
+  </tr>
+  <tr>
+    <td>Notes</td>
+    <td><textarea class="form-control" id='pnotes' row="3"></textarea></td>
+  </tr>
+</table>
+</div>
+</div>
+<br>
+<br>
+<div class="mt-4">
+  <button class="btn btn-success" type="submit" id='save_vitals'>Save</button>
+</div>
+</div>
+</div>
+<div id="Reports" class="tabcontent">
+  <table id="table_details" class="table">
+   
+      <thead class="thead-light">
+        <tr>
+         
+          <th>Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Photo</th>
+          <th>Medications</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+       
+      </tbody>
+    
+  </table>
+ </div>
+    </div>
+  </body>
+  <script>
+    function opentab(evt, tabname) {
+      var i, tablinks, tabcontent;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace("active", "");
+      }
+      document.getElementById(tabname).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+    const player = document.getElementById('player');
+  const canvas = document.getElementById('canvas');
+  const context = canvas.getContext('2d');
+  const captureButton = document.getElementById('capture');
+
+  const constraints = {
+    video: true,
+  };
+
+  captureButton.addEventListener('click', () => {
+    // Draw the video frame to the canvas.
+    context.drawImage(player, 0, 0, canvas.width, canvas.height);
+    var imageDataURL = canvas.toDataURL('image/png');
+   localStorage.setItem("photo",imageDataURL);
+    player.srcObject.getVideoTracks().forEach(track => track.stop());
+  });
+
+  // Attach the video stream to the video element and autoplay.
+  navigator.mediaDevices.getUserMedia(constraints)
+    .then((stream) => {
+      player.srcObject = stream;
+    });
+
+  </script>
+</html>

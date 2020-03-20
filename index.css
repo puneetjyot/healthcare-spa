@@ -1,0 +1,33 @@
+
+    .tab{
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    }
+    .tab button{
+    background-color:inherit;
+    outline:none;
+    cursor:pointer;
+    padding:14px 16px;
+    }
+    .tab button:hover{
+    background-color:#77b0de;
+    }
+    .tab button.active {
+      background-color: #77b0de;
+  }
+  .tabcontent {
+      display: none;
+      border-top: none;
+  }
+  #save{
+  background-color:green;
+  } 
+  
+vl {
+    border-left: 6px solid green;
+    height: 500px;
+    position: absolute;
+    left: 50%;
+    margin-left: -3px;
+    top: 0;
+}
