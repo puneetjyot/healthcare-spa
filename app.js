@@ -11,8 +11,8 @@ const port = process.env.PORT || 3000;
 app.use(express.json({limit: '50mb'}));
 app.use(express.urlencoded({extended:true,limit: '50mb'}));
 app.use(bodyParser.json());
-
-app.use(express.static(path.join(__dirname, 'public')));
+app.set('view engine', 'ejs');
+app.use(express.static(__dirname+ "/public"));
 app.use(function(req, res, next) {
     res.setHeader("Access-Control-Allow-Origin", "*");
   
@@ -39,6 +39,11 @@ app.get('/patient/list', (req, res) => {
 });
 
 try{
+    app.get('/', function(req, res) {
+
+        // ejs render automatically looks in the views folder
+        res.render('index');
+    });
 app.post('/patient', (req, res) => {
    console.log(req.body.Name);
    console.log(req.body);
