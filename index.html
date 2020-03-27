@@ -74,9 +74,7 @@
             <label for="image" class="col-sm-3 control-label">Photo:</label>
            
             <button class="btn btn-primary" id="capture">Take a Picture</button>
-            <div class="col-sm-12" id="canvas-div">
-              <canvas id="canvas" width=320 height=240></canvas>
-            </div>
+            
           </div>
          
             <div class=" col-sm-5">
@@ -85,11 +83,14 @@
             </div>
           
           </div>
-          <div class="col-6 m-3" style="height: 200px, max-width=200px">
+          <div class="col-6 m-3 d-flex" style="height: 200px, max-width=200px">
             <div >
-              <video style="height: 200px, max-width=200px" id="player" controls autoplay></video>
-             
+              <video height="210" width='200' id="player" controls autoplay></video>
             </div>
+              <div class="col-sm-12 mt-1" id="canvas-div">
+                <canvas id="canvas" width=170 height=200></canvas>
+              </div>
+           
             
             
           </div>
